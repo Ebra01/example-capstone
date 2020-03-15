@@ -1,0 +1,38 @@
+{% extends 'layouts/layout.html' %}
+
+{% block content %}
+    <div class="form-wrapper">
+        <form class="form" method="post" action="/movies/{{ movie.id }}/edit">
+            <h3 class="form-heading">Edit Movie <em>{{ movie.title }}</em>
+                <a href="{{ url_for('main.home') }}" title="Back to homepage">
+                    <i class="fa fa-home float-right"></i></a></h3>
+            <div class="form-group">
+                <label for="title">Title</label>
+                {% if form.title.errors %}
+                        {{ form.title(class="form-control form-control-lg is-invalid", placeholder='Title', autofocus = true) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                        {{ form.title(class="form-control form-control-lg", placeholder='Title', autofocus = true) }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="release_date">Release Date</label>
+                {% if form.release_date.errors %}
+                        {{ form.release_date(class="form-control form-control-lg is-invalid", placeholder='YYYY-MM-DD HH:MM', autofocus = true) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.release_date.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                        {{ form.release_date(class="form-control form-control-lg", placeholder='YYYY-MM-DD HH:MM', autofocus = true) }}
+                {% endif %}
+            </div>
+            <input type="submit" value="Edit Movie" class="btn btn-primary btn-lg btn-block">
+        </form>
+    </div>
+{% endblock %}

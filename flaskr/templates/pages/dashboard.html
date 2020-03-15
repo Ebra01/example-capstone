@@ -1,0 +1,9 @@
+{% extends "layouts/layout.html" %}
+
+{% block content %}
+    <div class="logged-in-box auth0-box logged-in">
+        <h2>Welcome {{userinfo['name']}}</h2>
+        <pre>{{userinfo_pretty}}</pre>
+        <a class="btn btn-primary btn-lg btn-logout btn-block" href="/logout">Logout</a>
+    </div>
+{% endblock %}

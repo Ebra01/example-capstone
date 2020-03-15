@@ -1,0 +1,36 @@
+{% extends 'layouts/layout.html' %}
+{% block content %}
+    <div class="container">
+        <h3 class="font-weight-bolder ml-2 mt-2 pb-2 text-dark">Actors:</h3>
+        <ul class="items m-2">
+            {% for actor in actors %}
+                <li>
+                    <a href="/actors/{{ actor.id }}">
+                        <i class="fas fa-users"></i>
+                        <div class="item">
+                            <h5>{{ actor.name }}</h5>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container">
+        <h3 class="font-weight-bolder ml-2 mt-2 pb-2 text-dark">Actresses:</h3>
+        <ul class="items m-2">
+            {% for actor in actresses %}
+                <li>
+                    <a href="/actors/{{ actor.id }}">
+                        <i class="fas fa-users"></i>
+                        <div class="item">
+                            <h5>{{ actor.name }}</h5>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <form action="{{ url_for('actors.create_actors_form') }}" method="GET" class="float-xl-right">
+        <input class="btn btn-dark w-10 h-10 " type="submit" value="Create New Actor">
+    </form>
+{% endblock %}

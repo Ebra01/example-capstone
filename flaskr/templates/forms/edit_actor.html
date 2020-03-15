@@ -1,0 +1,74 @@
+{% extends 'layouts/layout.html' %}
+{% block optstyles %}
+    .ml-special {
+        margin: auto;
+        margin-left: 129px;
+    }
+{% endblock %}
+
+{% block content %}
+    <div class="form-wrapper">
+        <form class="form" method="post" action="/actors/{{ actor.id }}/edit">
+            <h3 class="form-heading">Edit Actor <em>{{ actor.name }}</em>
+                <a href="{{ url_for('main.home') }}" title="Back to homepage">
+                    <i class="fa fa-home float-right"></i></a></h3>
+            <div class="form-group">
+                <label for="first_name">First name</label><label for="last_name" class="ml-special">Last name</label>
+                <div class="form-inline">
+
+                    <div class="form-group">
+                        {% if form.first_name.errors %}
+                        {{ form.first_name(class="form-control form-control-lg is-invalid", placeholder='First Name', autofocus = true) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.first_name.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.first_name(class="form-control form-control-lg", placeholder='First Name', autofocus = true) }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {% if form.last_name.errors %}
+                        {{ form.last_name(class="form-control form-control-lg is-invalid", placeholder='Last Name', autofocus = true) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.last_name.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.last_name(class="form-control form-control-lg", placeholder='Last Name', autofocus = true) }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                {% if form.age.errors %}
+                        {{ form.age(class="form-control form-control-lg is-invalid", placeholder='Age', autofocus = true) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.age.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                        {{ form.age(class="form-control form-control-lg", placeholder='Age', autofocus = true) }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                {% if form.gender.errors %}
+                        {{ form.gender(class="form-control form-control-lg is-invalid", placeholder='Gender', autofocus = true) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.gender.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                        {{ form.gender(class="form-control form-control-lg", placeholder='Gender', autofocus = true) }}
+                {% endif %}
+            </div>
+            <input type="submit" value="Edit Actor" class="btn btn-primary btn-lg btn-block">
+        </form>
+    </div>
+{% endblock %}
